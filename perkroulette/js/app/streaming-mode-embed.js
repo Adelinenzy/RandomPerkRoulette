@@ -1,6 +1,12 @@
 var perk_json;
 var active_type;
-let url_vars = new URL(document.location).searchParams;
+let url_vars = new URL(window.location.href).searchParams;
+
+// Depuis /perkroulette/streaming-mode/embed/
+// on remonte à /perkroulette/ puis on va dans css/img et json
+const ROOT_PATH = "../../";
+const IMG_BASE = ROOT_PATH + "css/img/";
+const JSON_BASE = ROOT_PATH + "json/";
 
 function customColors() {
     if (url_vars.has("bg-c")) {
@@ -35,22 +41,23 @@ function customColors() {
 }
 
 function loadPerks() {
-    if (url_vars.get("type") == "surv") {
-        var request = new XMLHttpRequest();
-        request.open("GET", "../../json/survivor-perks.json", false);
-        request.send(null);
-        perk_json = JSON.parse(request.responseText);
-        active_type = "surv";
+    var request = new XMLHttpRequest();
 
-    } else if (url_vars.get("type") == "kill") {
-        var request = new XMLHttpRequest();
-        request.open("GET", "../../json/killer-perks.json", false);
-        request.send(null);
-        perk_json = JSON.parse(request.responseText);
+    if (url_vars.get("type") === "surv") {
+        request.open("GET", JSON_BASE + "survivor-perks.json", false);
+        active_type = "surv";
+    } else if (url_vars.get("type") === "kill") {
+        request.open("GET", JSON_BASE + "killer-perks.json", false);
         active_type = "kill";
+    } else {
+        // type inconnu -> on sort
+        return;
     }
 
-    //  --- Sort perks alphabetically ---
+    request.send(null);
+    perk_json = JSON.parse(request.responseText);
+
+    //  --- Tri des perks par ordre alphabétique ---
     perk_json.perks.sort(function (a, b) {
         return a.perk_name.localeCompare(b.perk_name);
     });
@@ -60,16 +67,16 @@ function pickRandomPerk() {
     customColors();
     loadPerks();
 
+    if (!perk_json || !perk_json.perks) return;
+
+    let perk_blacklist = [];
     if (url_vars.has("exclude")) {
-        var perk_blacklist = url_vars.get("exclude").split(",").map(Number);
-    } else {
-        perk_blacklist = [];
+        perk_blacklist = url_vars.get("exclude").split(",").map(Number);
     }
 
     if (perk_blacklist.length > (perk_json.perks.length - 4)) {
-
-        // TODO: Error: Not enough perks selected
-
+        // TODO: pas assez de perks sélectionnées
+        return;
     } else {
         var sel_perks = [];
         while (sel_perks.length < 4) {
@@ -85,20 +92,39 @@ function pickRandomPerk() {
             if (url_vars.has("bg-url")) {
                 document.getElementById(id).style.backgroundImage = `url("${url_vars.get("bg-url")}")`;
             } else {
-                document.getElementById(id).style.backgroundImage = `url("../../css/img/perk_purple.png")`;
+                // fond violet -> chemin relatif vers /perkroulette/css/img/perk_purple.png
+                document.getElementById(id).style.backgroundImage = `url("${IMG_BASE}perk_purple.png")`;
             }
             i++;
-
         }
 
-        for (var i = 0; i < 4; i++) {
-            document.getElementById("pn" + i).innerHTML = perk_json.perks[sel_perks[i]].perk_name;
-            document.getElementById("pc" + i).innerHTML = perk_json.perks[sel_perks[i]].character;
-            document.getElementById("pi" + i).style.backgroundImage = "url(/perkroulette/css/img/" + active_type + "/iconperks-" + perk_json.perks[sel_perks[i]].perk_name.toString().toLowerCase().normalize("NFD").replace(/ /gi, '').replace(/'/gi, '').replace(/-/gi, '').replace(/&/gi, 'and').replace(/!/gi, '').replace(/:/gi, '').replace(/\p{Diacritic}/gu, '') + ".png)";
+        for (var j = 0; j < 4; j++) {
+            var perk = perk_json.perks[sel_perks[j]];
 
-            document.getElementById("pn" + i).classList.add('transparent');
-            document.getElementById("pc" + i).classList.add('transparent');
-            document.getElementById("p" + i).classList.add('transparent');
+            document.getElementById("pn" + j).innerHTML = perk.perk_name;
+            document.getElementById("pc" + j).innerHTML = perk.character;
+
+            // Construction du nom de fichier icône
+            var iconName = perk.perk_name
+                .toString()
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/ /gi, '')
+                .replace(/'/gi, '')
+                .replace(/-/gi, '')
+                .replace(/&/gi, 'and')
+                .replace(/!/gi, '')
+                .replace(/:/gi, '')
+                .replace(/\p{Diacritic}/gu, '');
+
+            // chemin relatif vers /perkroulette/css/img/{surv|kill}/iconperks-xxx.png
+            var iconPath = IMG_BASE + active_type + "/iconperks-" + iconName + ".png";
+
+            document.getElementById("pi" + j).style.backgroundImage = `url("${iconPath}")`;
+
+            document.getElementById("pn" + j).classList.add('transparent');
+            document.getElementById("pc" + j).classList.add('transparent');
+            document.getElementById("p" + j).classList.add('transparent');
         }
 
         window.setTimeout(perk1an, 250);
