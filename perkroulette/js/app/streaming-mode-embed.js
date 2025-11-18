@@ -2,6 +2,25 @@ var perk_json;
 var active_type;
 let url_vars = new URL(document.location).searchParams;
 
+// WebSocket vers Streamer.bot
+let sbSocket = null;
+
+function connectStreamerbotWS() {
+    try {
+        sbSocket = new WebSocket("ws://127.0.0.1:8080/");
+        sbSocket.onopen = () => {
+            console.log("[SB] WebSocket connecté !");
+        };
+        sbSocket.onerror = () => {
+            console.warn("[SB] Impossible de se connecter à WebSocket.");
+        };
+    } catch (e) {
+        console.warn("[SB] WebSocket erreur :", e);
+    }
+}
+
+connectStreamerbotWS();
+
 function customColors() {
     if (url_vars.has("bg-c")) {
         if (url_vars.get("bg-c").includes("rgb")) {
@@ -10,27 +29,21 @@ function customColors() {
             document.querySelector("#streaming-mode-embed").style.background = `#${url_vars.get("bg-c")}`;
         }
     }
+
     if (url_vars.has("pn-c")) {
-        var x, i;
-        x = document.querySelectorAll(".perk_name");
-        for (i = 0; i < x.length; i++) {
-            if (url_vars.get("pn-c").includes("rgb")) {
-                x[i].style.color = `${url_vars.get("pn-c")}`;
-            } else {
-                x[i].style.color = `#${url_vars.get("pn-c")}`;
-            }
-        }
+        document.querySelectorAll(".perk_name").forEach(x => {
+            x.style.color = url_vars.get("pn-c").includes("rgb") 
+                ? `${url_vars.get("pn-c")}` 
+                : `#${url_vars.get("pn-c")}`;
+        });
     }
+
     if (url_vars.has("ch-c")) {
-        var x, i;
-        x = document.querySelectorAll(".perk_character");
-        for (i = 0; i < x.length; i++) {
-            if (url_vars.get("ch-c").includes("rgb")) {
-                x[i].style.color = `${url_vars.get("ch-c")}`;
-            } else {
-                x[i].style.color = `#${url_vars.get("ch-c")}`;
-            }
-        }
+        document.querySelectorAll(".perk_character").forEach(x => {
+            x.style.color = url_vars.get("ch-c").includes("rgb") 
+                ? `${url_vars.get("ch-c")}` 
+                : `#${url_vars.get("ch-c")}`;
+        });
     }
 }
 
@@ -38,141 +51,140 @@ function loadPerks() {
     var request = new XMLHttpRequest();
 
     if (url_vars.get("type") == "surv") {
-        // chemin relatif depuis /perkroulette/streaming-mode/embed/
         request.open("GET", "../../json/survivor-perks.json", false);
-        request.send(null);
-        perk_json = JSON.parse(request.responseText);
         active_type = "surv";
-
-    } else if (url_vars.get("type") == "kill") {
+    } else {
         request.open("GET", "../../json/killer-perks.json", false);
-        request.send(null);
-        perk_json = JSON.parse(request.responseText);
         active_type = "kill";
     }
 
-    //  --- Sort perks alphabetically ---
-    perk_json.perks.sort(function (a, b) {
-        return a.perk_name.localeCompare(b.perk_name);
-    });
+    request.send(null);
+    perk_json = JSON.parse(request.responseText);
+
+    perk_json.perks.sort((a, b) => a.perk_name.localeCompare(b.perk_name));
 }
 
+// -----------------------------
+// ENVOI STREAMERBOT VIA WEBSOCKET
+// -----------------------------
+function sendToStreamerBotWS(selected) {
+
+    if (!sbSocket || sbSocket.readyState !== 1) {
+        console.warn("[SB] WebSocket pas connecté, impossible d’envoyer l'annonce.");
+        return;
+    }
+
+    let payload = {
+        request: "DoAction",
+        action: {
+            name: "DBD Roulette - Annonce Chat"
+        },
+        args: {
+            type: (active_type === "kill" ? "Killer" : "Survivant"),
+
+            perk1: selected[0].perk_name,
+            perk1Char: selected[0].character,
+
+            perk2: selected[1].perk_name,
+            perk2Char: selected[1].character,
+
+            perk3: selected[2].perk_name,
+            perk3Char: selected[2].character,
+
+            perk4: selected[3].perk_name,
+            perk4Char: selected[3].character
+        }
+    };
+
+    sbSocket.send(JSON.stringify(payload));
+    console.log("[SB] Annonce envoyée :", payload);
+}
+
+// -----------------------------
+// PICK PERKS
+// -----------------------------
 function pickRandomPerk() {
     customColors();
     loadPerks();
 
-    var perk_blacklist;
-    if (url_vars.has("exclude")) {
-        perk_blacklist = url_vars.get("exclude").split(",").map(Number);
-    } else {
-        perk_blacklist = [];
+    let blacklist = url_vars.has("exclude")
+        ? url_vars.get("exclude").split(",").map(Number)
+        : [];
+
+    let sel = [];
+    while (sel.length < 4) {
+        let r = Math.floor(Math.random() * perk_json.perks.length);
+        if (blacklist.includes(r)) continue;
+        if (sel.includes(r)) continue;
+        sel.push(r);
     }
 
-    if (perk_blacklist.length > (perk_json.perks.length - 4)) {
+    let selectedPerks = [];
 
-        // TODO: Error: Not enough perks selected
+    for (let i = 0; i < 4; i++) {
+        let p = perk_json.perks[sel[i]];
+        selectedPerks.push(p);
 
-    } else {
-        var sel_perks = [];
-        while (sel_perks.length < 4) {
-            var randomnumber = Math.floor(Math.random() * (perk_json.perks.length));
-            if (perk_blacklist.indexOf(randomnumber) > -1) continue;
-            if (sel_perks.indexOf(randomnumber) > -1) continue;
-            sel_perks[sel_perks.length] = randomnumber;
-        }
+        document.getElementById("pn" + i).innerHTML = p.perk_name;
+        document.getElementById("pc" + i).innerHTML = p.character;
 
-        var i = 0;
-        while (i < 4) {
-            var id = 'p' + i.toString();
-            if (url_vars.has("bg-url")) {
-                document.getElementById(id).style.backgroundImage = `url("${url_vars.get("bg-url")}")`;
-            } else {
-                // chemin relatif vers perk_purple
-                document.getElementById(id).style.backgroundImage = `url("../../css/img/perk_purple.png")`;
-            }
-            i++;
-        }
-
-        for (var i = 0; i < 4; i++) {
-            var perk = perk_json.perks[sel_perks[i]];
-            var baseName = perk.perk_name.toString()
-                .toLowerCase()
+        let icon = "../../css/img/" + active_type + "/iconperks-" +
+            p.perk_name.toLowerCase()
                 .normalize("NFD")
-                .replace(/ /gi, '')
-                .replace(/'/gi, '')
-                .replace(/-/gi, '')
-                .replace(/&/gi, 'and')
-                .replace(/!/gi, '')
-                .replace(/:/gi, '')
-                .replace(/\p{Diacritic}/gu, '');
+                .replace(/\p{Diacritic}/gu, "")
+                .replace(/[^a-z0-9]/gi, "") +
+            ".png";
 
-            // chemin relatif vers les icônes
-            var iconPath = `../../css/img/${active_type}/iconperks-${baseName}.png`;
+        document.getElementById("pi" + i).style.backgroundImage = "url(" + icon + ")";
 
-            document.getElementById("pn" + i).innerHTML = perk.perk_name;
-            document.getElementById("pc" + i).innerHTML = perk.character;
-            document.getElementById("pi" + i).style.backgroundImage = `url("${iconPath}")`;
-
-            document.getElementById("pn" + i).classList.add('transparent');
-            document.getElementById("pc" + i).classList.add('transparent');
-            document.getElementById("p" + i).classList.add('transparent');
-        }
-
-        window.setTimeout(perk1an, 250);
+        document.getElementById("p" + i).classList.add("transparent");
+        document.getElementById("pn" + i).classList.add("transparent");
+        document.getElementById("pc" + i).classList.add("transparent");
     }
+
+    // 🔥 envoi websocket vers Streamer.bot
+    sendToStreamerBotWS(selectedPerks);
+
+    setTimeout(perk1an, 250);
 }
 
+// Animations
 function perk1an() {
-    document.getElementById("p0").classList.remove('transparent');
+    document.getElementById("p0").classList.remove("transparent");
+    document.getElementById("p0").classList.add("animate1");
+    document.getElementById("pn0").classList.add("animate2");
+    document.getElementById("pc0").classList.add("animate3");
 
-    document.getElementById("p0").classList.add('animate1');
-    document.getElementById("pn0").classList.add('animate2');
-    document.getElementById("pc0").classList.add('animate3');
-
-    window.setTimeout(perk2an, 1000);
+    setTimeout(perk2an, 1000);
 }
 
 function perk2an() {
-    document.getElementById("p1").classList.remove('transparent');
+    document.getElementById("p1").classList.remove("transparent");
+    document.getElementById("p1").classList.add("animate1");
+    document.getElementById("pn1").classList.add("animate2");
+    document.getElementById("pc1").classList.add("animate3");
 
-    document.getElementById("p1").classList.add('animate1');
-    document.getElementById("pn1").classList.add('animate2');
-    document.getElementById("pc1").classList.add('animate3');
-
-    window.setTimeout(perk3an, 1000);
+    setTimeout(perk3an, 1000);
 }
 
 function perk3an() {
-    document.getElementById("p2").classList.remove('transparent');
+    document.getElementById("p2").classList.remove("transparent");
+    document.getElementById("p2").classList.add("animate1");
+    document.getElementById("pn2").classList.add("animate2");
+    document.getElementById("pc2").classList.add("animate3");
 
-    document.getElementById("p2").classList.add('animate1');
-    document.getElementById("pn2").classList.add('animate2');
-    document.getElementById("pc2").classList.add('animate3');
-
-    window.setTimeout(perk4an, 1000);
+    setTimeout(perk4an, 1000);
 }
 
 function perk4an() {
-    document.getElementById("p3").classList.remove('transparent');
-
-    document.getElementById("p3").classList.add('animate1');
-    document.getElementById("pn3").classList.add('animate2');
-    document.getElementById("pc3").classList.add('animate3');
+    document.getElementById("p3").classList.remove("transparent");
+    document.getElementById("p3").classList.add("animate1");
+    document.getElementById("pn3").classList.add("animate2");
+    document.getElementById("pc3").classList.add("animate3");
 }
 
 function cleanup() {
-    document.getElementById("p0").classList.remove('animate1');
-    document.getElementById("p1").classList.remove('animate1');
-    document.getElementById("p2").classList.remove('animate1');
-    document.getElementById("p3").classList.remove('animate1');
-
-    document.getElementById("pn0").classList.remove('animate2');
-    document.getElementById("pn1").classList.remove('animate2');
-    document.getElementById("pn2").classList.remove('animate2');
-    document.getElementById("pn3").classList.remove('animate2');
-
-    document.getElementById("pc0").classList.remove('animate3');
-    document.getElementById("pc1").classList.remove('animate3');
-    document.getElementById("pc2").classList.remove('animate3');
-    document.getElementById("pc3").classList.remove('animate3');
+    ["p0","p1","p2","p3"].forEach(id => document.getElementById(id).classList.remove("animate1"));
+    ["pn0","pn1","pn2","pn3"].forEach(id => document.getElementById(id).classList.remove("animate2"));
+    ["pc0","pc1","pc2","pc3"].forEach(id => document.getElementById(id).classList.remove("animate3"));
 }
