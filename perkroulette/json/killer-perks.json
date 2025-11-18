@@ -1,0 +1,549 @@
+{
+	"perks": [
+		{
+			"perk_name": "A Nurse's Calling",
+			"character": "The Nurse Teachable Perk"
+		},
+		{
+			"perk_name": "Agitation",
+			"character": "The Trapper Teachable Perk"
+		},
+		{
+			"perk_name": "Bamboozle",
+			"character": "The Clown Teachable Perk"
+		},
+		{
+			"perk_name": "Barbecue & Chilli",
+			"character": "The Cannibal Teachable Perk"
+		},
+		{
+			"perk_name": "Beast of Prey",
+			"character": "The Huntress Teachable Perk"
+		},
+		{
+			"perk_name": "Bitter Murmur",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Blood Echo",
+			"character": "The Oni Teachable Perk"
+		},
+		{
+			"perk_name": "Blood Warden",
+			"character": "The Nightmare Teachable Perk"
+		},
+		{
+			"perk_name": "Bloodhound",
+			"character": "The Wraith Teachable Perk"
+		},
+		{
+			"perk_name": "Brutal Strength",
+			"character": "The Trapper Teachable Perk"
+		},
+		{
+			"perk_name": "Corrupt Intervention",
+			"character": "The Plague Teachable Perk"
+		},
+		{
+			"perk_name": "Coulrophobia",
+			"character": "The Clown Teachable Perk"
+		},
+		{
+			"perk_name": "Coup de Grâce",
+			"character": "The Twins Teachable Perk"
+		},
+		{
+			"perk_name": "Claustrophobia",
+			"character": "All Characters (The Demogorgon)"
+		},
+		{
+			"perk_name": "Dark Devotion",
+			"character": "The Plague Teachable Perk"
+		},
+		{
+			"perk_name": "Dead Man's Switch",
+			"character": "The Deathslinger Teachable Perk"
+		},
+		{
+			"perk_name": "Deathbound",
+			"character": "The Executioner Teachable Perk"
+		},
+		{
+			"perk_name": "Deerstalker",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Discordance",
+			"character": "The Legion Teachable Perk"
+		},
+		{
+			"perk_name": "Distressing",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Dragon's Grip",
+			"character": "The Blight Teachable Perk"
+		},
+		{
+			"perk_name": "Dying Light",
+			"character": "The Shape Teachable Perk"
+		},
+		{
+			"perk_name": "Enduring",
+			"character": "The Hillbilly Teachable Perk"
+		},
+		{
+			"perk_name": "Fire Up",
+			"character": "The Nightmare Teachable Perk"
+		},
+		{
+			"perk_name": "Forced Penance",
+			"character": "The Executioner Teachable Perk"
+		},
+		{
+			"perk_name": "Franklin's Demise",
+			"character": "The Cannibal Teachable Perk"
+		},
+		{
+			"perk_name": "Furtive Chase",
+			"character": "The Ghost Face Teachable Perk"
+		},
+		{
+			"perk_name": "Gearhead",
+			"character": "The Deathslinger Teachable Perk"
+		},
+		{
+			"perk_name": "Hangman's Trick",
+			"character": "The Pig Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Blood Favour",
+			"character": "The Blight Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Devour Hope",
+			"character": "The Hag Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Haunted Ground",
+			"character": "The Spirit Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Huntress Lullaby",
+			"character": "The Huntress Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: No One Escapes Death",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Hex: Retribution",
+			"character": "The Deathslinger Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Ruin",
+			"character": "The Hag Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: The Third Seal",
+			"character": "The Hag Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Thrill of the Hunt",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Hex: Undying",
+			"character": "The Blight Teachable Perk"
+		},
+		{
+			"perk_name": "Hoarder",
+			"character": "The Twins Teachable Perk"
+		},
+		{
+			"perk_name": "I'm All Ears",
+			"character": "The Ghost Face Teachable Perk"
+		},
+		{
+			"perk_name": "Infectious Fright",
+			"character": "The Plague Teachable Perk"
+		},
+		{
+			"perk_name": "Insidious",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Iron Grasp",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Iron Maiden",
+			"character": "The Legion Teachable Perk"
+		},
+		{
+			"perk_name": "Knock Out",
+			"character": "The Cannibal Teachable Perk"
+		},
+		{
+			"perk_name": "Lightborn",
+			"character": "The Hillbilly Teachable Perk"
+		},
+		{
+			"perk_name": "Mad Grit",
+			"character": "The Legion Teachable Perk"
+		},
+		{
+			"perk_name": "Make Your Choice",
+			"character": "The Pig Teachable Perk"
+		},
+		{
+			"perk_name": "Fearmonger",
+			"character": "All Characters (The Demogorgon)"
+		},
+		{
+			"perk_name": "Monitor & Abuse",
+			"character": "The Doctor Teachable Perk"
+		},
+		{
+			"perk_name": "Monstrous Shrine",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Nemesis",
+			"character": "The Oni Teachable Perk"
+		},
+		{
+			"perk_name": "Oppression",
+			"character": "The Twins Teachable Perk"
+		},
+		{
+			"perk_name": "Overcharge",
+			"character": "The Doctor Teachable Perk"
+		},
+		{
+			"perk_name": "Overwhelming Presence",
+			"character": "The Doctor Teachable Perk"
+		},
+		{
+			"perk_name": "Play with Your Food",
+			"character": "The Shape Teachable Perk"
+		},
+		{
+			"perk_name": "Pop Goes the Weasel",
+			"character": "The Clown Teachable Perk"
+		},
+		{
+			"perk_name": "Predator",
+			"character": "The Wraith Teachable Perk"
+		},
+		{
+			"perk_name": "Rancor",
+			"character": "The Spirit Teachable Perk"
+		},
+		{
+			"perk_name": "Remember Me",
+			"character": "The Nightmare Teachable Perk"
+		},
+		{
+			"perk_name": "Save the Best for Last",
+			"character": "The Shape Teachable Perk"
+		},
+		{
+			"perk_name": "Shadowborn",
+			"character": "The Wraith Teachable Perk"
+		},
+		{
+			"perk_name": "Sloppy Butcher",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Spies from the Shadows",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Spirit Fury",
+			"character": "The Spirit Teachable Perk"
+		},
+		{
+			"perk_name": "Stridor",
+			"character": "The Nurse Teachable Perk"
+		},
+		{
+			"perk_name": "Jolt",
+			"character": "All Characters (The Demogorgon)"
+		},
+		{
+			"perk_name": "Surveillance",
+			"character": "The Pig Teachable Perk"
+		},
+		{
+			"perk_name": "Territorial Imperative",
+			"character": "The Huntress Teachable Perk"
+		},
+		{
+			"perk_name": "Thanatophobia",
+			"character": "The Nurse Teachable Perk"
+		},
+		{
+			"perk_name": "Thrilling Tremors",
+			"character": "The Ghost Face Teachable Perk"
+		},
+		{
+			"perk_name": "Tinkerer",
+			"character": "The Hillbilly Teachable Perk"
+		},
+		{
+			"perk_name": "Trail of Torment",
+			"character": "The Executioner Teachable Perk"
+		},
+		{
+			"perk_name": "Unnerving Presence",
+			"character": "The Trapper Teachable Perk"
+		},
+		{
+			"perk_name": "Unrelenting",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Whispers",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Zanshin Tactics",
+			"character": "The Oni Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Crowd Control",
+			"character": "The Trickster Teachable Perk"
+		},
+		{
+			"perk_name": "No Way Out",
+			"character": "The Trickster Teachable Perk"
+		},
+		{
+			"perk_name": "Starstruck",
+			"character": "The Trickster Teachable Perk"
+		},
+		{
+			"perk_name": "Lethal Pursuer",
+			"character": "The Nemesis Teachable Perk"
+		},
+		{
+			"perk_name": "Hysteria",
+			"character": "The Nemesis Teachable Perk"
+		},
+		{
+			"perk_name": "Eruption",
+			"character": "The Nemesis Teachable Perk"
+		},
+		{
+			"perk_name": "Deadlock",
+			"character": "The Cenobite Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Plaything",
+			"character": "The Cenobite Teachable Perk"
+		},
+		{
+			"perk_name": "Scourge Hook: Gift of Pain",
+			"character": "The Cenobite Teachable Perk"
+		},
+		{
+			"perk_name": "Grim Embrace",
+			"character": "The Artist Teachable Perk"
+		},
+		{
+			"perk_name": "Scourge Hook: Pain Resonance",
+			"character": "The Artist Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Pentimento",
+			"character": "The Artist Teachable Perk"
+		},
+		{
+			"perk_name": "Scourge Hook: Floods of Rage",
+			"character": "The Onryō's Teachable Perk"
+		},
+		{
+			"perk_name": "Call of Brine",
+			"character": "The Onryō's Teachable Perk"
+		},
+		{
+			"perk_name": "Merciless Storm",
+			"character": "The Onryō's Teachable Perk"
+		},
+		{
+			"perk_name": "Dissolution",
+			"character": "The Dredge Teachable Perk"
+		},
+		{
+			"perk_name": "Darkness Revealed",
+			"character": "The Dredge Teachable Perk"
+		},
+		{
+			"perk_name": "Septic Touch",
+			"character": "The Dredge Teachable Perk"
+		},
+		{
+			"perk_name": "Shattered Hope",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Superior Anatomy",
+			"character": "The Mastermind Teachable Perk"
+		},
+		{
+			"perk_name": "Awakened Awareness",
+			"character": "The Mastermind Teachable Perk"
+		},
+		{
+			"perk_name": "Terminus",
+			"character": "The Mastermind Teachable Perk"
+		},
+		{
+			"perk_name": "Nowhere to Hide",
+			"character": "The Knight Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Face the Darkness",
+			"character": "The Knight Teachable Perk"
+		},
+		{
+			"perk_name": "Hubris",
+			"character": "The Knight Teachable Perk"
+		},
+		{
+			"perk_name": "Game Afoot",
+			"character": "The Skull Merchant Teachable Perk"
+		},
+		{
+			"perk_name": "Leverage",
+			"character": "The Skull Merchant Teachable Perk"
+		},
+		{
+			"perk_name": "THWACK!",
+			"character": "The Skull Merchant Teachable Perk"
+		},
+		{
+			"perk_name": "Forced Hesitation",
+			"character": "The Singularity Teachable Perk"
+		},
+		{
+			"perk_name": "Genetic Limits",
+			"character": "The Singularity Teachable Perk"
+		},
+		{
+			"perk_name": "Machine Learning",
+			"character": "The Singularity Teachable Perk"
+		},
+		{
+			"perk_name": "Alien Instinct",
+			"character": "The Xenomorph Teachable Perk"
+		},
+		{
+			"perk_name": "Rapid Brutality",
+			"character": "The Xenomorph Teachable Perk"
+		},
+		{
+			"perk_name": "Ultimate Weapon",
+			"character": "The Xenomorph Teachable Perk"
+		},
+		{
+			"perk_name": "Hex: Two Can Play",
+			"character": "The Good Guy Teachable Perk"
+		},
+		{
+			"perk_name": "Friends 'til the End",
+			"character": "The Good Guy Teachable Perk"
+		},
+		{
+			"perk_name": "Batteries Included",
+			"character": "The Good Guy Teachable Perk"
+		},
+		{
+			"perk_name": "Unbound",
+			"character": "The Unknown Teachable Perk"
+		},
+		{
+			"perk_name": "Undone",
+			"character": "The Unknown Teachable Perk"
+		},
+		{
+  			"perk_name": "Unforeseen",
+  			"character": "The Unknown Teachable Perk"
+		},
+		{
+ 			"perk_name": "Dark Arrogance",
+  			"character": "The Lich Teachable Perk"
+		},
+		{
+  			"perk_name": "Languid Touch",
+  			"character": "The Lich Teachable Perk"
+		},
+		{
+  			"perk_name": "Weave Attunement",
+  			"character": "The Lich Teachable Perk"
+		},
+		{
+  			"perk_name": "None Are Free",
+  			"character": "The Ghoul Teachable Perk"
+		},
+		{
+  			"perk_name": "Scourge Hook: Jagged Compass",
+  			"character": "The Houndmaster Teachable Perk"
+		},
+		{
+  			"perk_name": "Hex: Nothing But Misery",
+  			"character": "The Ghoul Teachable Perk"
+		},
+		{
+  			"perk_name": "No Quarter",
+  			"character": "The Houndmaster Teachable Perk"
+		},
+		{
+  			"perk_name": "Human Greed",
+  			"character": "The Dark Lord Teachable Perk"
+		},
+		{
+  			"perk_name": "Hex: Wretched Fate",
+  			"character": "The Dark Lord Teachable Perk"
+		},
+		{
+  			"perk_name": "Forever Entwined",
+  			"character": "The Ghoul Teachable Perk"
+		},
+		{
+  			"perk_name": "Dominance",
+  			"character": "The Dark Lord Teachable Perk"
+		},
+		{
+  			"perk_name": "All-Shaking Thunder",
+  			"character": "The Houndmaster Teachable Perk"
+		},
+		{
+  			"perk_name": "Haywire",
+  			"character": "The Animatronic Teachable Perk"
+		},
+		{
+  			"perk_name": "Help Wanted",
+  			"character": "The Animatronic Teachable Perk"
+		},
+		{
+  			"perk_name": "Phantom Fear",
+  			"character": "The Animatronic Teachable Perk"
+		},
+		{
+  			"perk_name": "Hex: Overture Of Doom",
+  			"character": "The Krasue Teachable Perk"
+		},
+		{
+  			"perk_name": "Ravenous",
+  			"character": "The Krasue Teachable Perk"
+		},
+		{
+  			"perk_name": "Wandering Eye",
+  			"character": "The Krasue Teachable Perk"
+		}
+
+	]
+}

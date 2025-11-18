@@ -1,0 +1,626 @@
+{
+	"perks": [
+		{
+			"perk_name": "Ace in The Hole",
+			"character": "Ace Visconti Teachable Perk"
+		},
+		{
+			"perk_name": "Adrenaline",
+			"character": "Meg Thomas Teachable Perk"
+		},
+		{
+			"perk_name": "Aftercare",
+			"character": "Jeff Johansen Teachable Perk"
+		},
+		{
+			"perk_name": "Alert",
+			"character": "Feng Min Teachable Perk"
+		},
+		{
+			"perk_name": "Any Means Necessary",
+			"character": "Yui Kimura Teachable Perk"
+		},
+		{
+			"perk_name": "Appraisal",
+			"character": "Élodie Rakoto Teachable Perk"
+		},
+		{
+			"perk_name": "Autodidact",
+			"character": "Adam Francis Teachable Perk"
+		},
+		{
+			"perk_name": "Guardian",
+			"character": "All Characters (Steve Harrington)"
+		},
+		{
+			"perk_name": "Balanced Landing",
+			"character": "Nea Karlsson Teachable Perk"
+		},
+		{
+			"perk_name": "Situational Awareness",
+			"character": "All Characters (Nancy Wheeler)"
+		},
+		{
+			"perk_name": "Blood Pact",
+			"character": "Cheryl Mason Teachable Perk"
+		},
+		{
+			"perk_name": "Boil Over",
+			"character": "Kate Denson Teachable Perk"
+		},
+		{
+			"perk_name": "Bond",
+			"character": "Dwight Fairfield Teachable Perk"
+		},
+		{
+			"perk_name": "Borrowed Time",
+			"character": "Bill Overbeck Teachable Perk"
+		},
+		{
+			"perk_name": "Botany Knowledge",
+			"character": "Claudette Morel Teachable Perk"
+		},
+		{
+			"perk_name": "Breakdown",
+			"character": "Jeff Johansen Teachable Perk"
+		},
+		{
+			"perk_name": "Breakout",
+			"character": "Yui Kimura Teachable Perk"
+		},
+		{
+			"perk_name": "Buckle Up",
+			"character": "Ash Williams Teachable Perk"
+		},
+		{
+			"perk_name": "Built to Last",
+			"character": "Felix Richter Teachable Perk"
+		},
+		{
+			"perk_name": "Calm Spirit",
+			"character": "Jake Park Teachable Perk"
+		},
+		{
+			"perk_name": "Kinship",
+			"character": "All Characters (Steve Harrington)"
+		},
+		{
+			"perk_name": "Dance With Me",
+			"character": "Kate Denson Teachable Perk"
+		},
+		{
+			"perk_name": "Dark Sense",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Dead Hard",
+			"character": "David King Teachable Perk"
+		},
+		{
+			"perk_name": "Deception",
+			"character": "Élodie Rakoto Teachable Perk"
+		},
+		{
+			"perk_name": "Decisive Strike",
+			"character": "Laurie Strode Teachable Perk"
+		},
+		{
+			"perk_name": "Déjà Vu",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Deliverance",
+			"character": "Adam Francis Teachable Perk"
+		},
+		{
+			"perk_name": "Desperate Measures",
+			"character": "Felix Richter Teachable Perk"
+		},
+		{
+			"perk_name": "Detective's Hunch",
+			"character": "David Tapp Teachable Perk"
+		},
+		{
+			"perk_name": "Distortion",
+			"character": "Jeff Johansen Teachable Perk"
+		},
+		{
+			"perk_name": "Diversion",
+			"character": "Adam Francis Teachable Perk"
+		},
+		{
+			"perk_name": "Empathy",
+			"character": "Claudette Morel Teachable Perk"
+		},
+		{
+			"perk_name": "Self-Aware",
+			"character": "All Characters (Nancy Wheeler)"
+		},
+		{
+			"perk_name": "Flip-Flop",
+			"character": "Ash Williams Teachable Perk"
+		},
+		{
+			"perk_name": "For the People",
+			"character": "Zarina Kassir Teachable Perk"
+		},
+		{
+			"perk_name": "Head On",
+			"character": "Jane Romero Teachable Perk"
+		},
+		{
+			"perk_name": "Hope",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Inner Healing",
+			"character": "All Characters (Nancy Wheeler)"
+		},
+		{
+			"perk_name": "Iron Will",
+			"character": "Jake Park Teachable Perk"
+		},
+		{
+			"perk_name": "Kindred",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Leader",
+			"character": "Dwight Fairfield Teachable Perk"
+		},
+		{
+			"perk_name": "Left Behind",
+			"character": "Bill Overbeck Teachable Perk"
+		},
+		{
+			"perk_name": "Lightweight",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Lithe",
+			"character": "Feng Min Teachable Perk"
+		},
+		{
+			"perk_name": "Lucky Break",
+			"character": "Yui Kimura Teachable Perk"
+		},
+		{
+			"perk_name": "Mettle of Man",
+			"character": "Ash Williams Teachable Perk"
+		},
+		{
+			"perk_name": "No Mither",
+			"character": "David King Teachable Perk"
+		},
+		{
+			"perk_name": "No One Left Behind",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Object of Obsession",
+			"character": "Laurie Strode Teachable Perk"
+		},
+		{
+			"perk_name": "Off the Record",
+			"character": "Zarina Kassir Teachable Perk"
+		},
+		{
+			"perk_name": "Open Handed",
+			"character": "Ace Visconti Teachable Perk"
+		},
+		{
+			"perk_name": "Pharmacy",
+			"character": "Quentin Smith Teachable Perk"
+		},
+		{
+			"perk_name": "Plunderer's Instinct",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Poised",
+			"character": "Jane Romero Teachable Perk"
+		},
+		{
+			"perk_name": "Power Struggle",
+			"character": "Élodie Rakoto Teachable Perk"
+		},
+		{
+			"perk_name": "Premonition",
+			"character": "Dwight Fairfield Teachable Perk"
+		},
+		{
+			"perk_name": "Prove Thyself",
+			"character": "Dwight Fairfield Teachable Perk"
+		},
+		{
+			"perk_name": "Quick & Quiet",
+			"character": "Meg Thomas Teachable Perk"
+		},
+		{
+			"perk_name": "Red Herring",
+			"character": "Zarina Kassir Teachable Perk"
+		},
+		{
+			"perk_name": "Repressed Alliance",
+			"character": "Cheryl Mason Teachable Perk"
+		},
+		{
+			"perk_name": "Resilience",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Saboteur",
+			"character": "Jake Park Teachable Perk"
+		},
+		{
+			"perk_name": "Renewal",
+			"character": "All Characters (Steve Harrington)"
+		},
+		{
+			"perk_name": "Self-Care",
+			"character": "Claudette Morel Teachable Perk"
+		},
+		{
+			"perk_name": "Slippery Meat",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Small Game",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Sole Survivor",
+			"character": "Laurie Strode Teachable Perk"
+		},
+		{
+			"perk_name": "Solidarity",
+			"character": "Jane Romero Teachable Perk"
+		},
+		{
+			"perk_name": "Soul Guard",
+			"character": "Cheryl Mason Teachable Perk"
+		},
+		{
+			"perk_name": "Spine Chill",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Sprint Burst",
+			"character": "Meg Thomas Teachable Perk"
+		},
+		{
+			"perk_name": "Stake Out",
+			"character": "David Tapp Teachable Perk"
+		},
+		{
+			"perk_name": "Streetwise",
+			"character": "Nea Karlsson Teachable Perk"
+		},
+		{
+			"perk_name": "Technician",
+			"character": "Feng Min Teachable Perk"
+		},
+		{
+			"perk_name": "Tenacity",
+			"character": "David Tapp Teachable Perk"
+		},
+		{
+			"perk_name": "This Is Not Happening",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "Unbreakable",
+			"character": "Bill Overbeck Teachable Perk"
+		},
+		{
+			"perk_name": "Up The Ante",
+			"character": "Ace Visconti Teachable Perk"
+		},
+		{
+			"perk_name": "Urban Evasion",
+			"character": "Nea Karlsson Teachable Perk"
+		},
+		{
+			"perk_name": "Vigil",
+			"character": "Quentin Smith Teachable Perk"
+		},
+		{
+			"perk_name": "Visionary",
+			"character": "Felix Richter Teachable Perk"
+		},
+		{
+			"perk_name": "Wake Up!",
+			"character": "Quentin Smith Teachable Perk"
+		},
+		{
+			"perk_name": "We'll Make It",
+			"character": "All Characters"
+		},
+		{
+			"perk_name": "We're Gonna Live Forever",
+			"character": "David King Teachable Perk"
+		},
+		{
+			"perk_name": "Windows Of Opportunity",
+			"perk_color": "green",
+			"character": "Kate Denson Teachable Perk"
+		},
+		{
+			"perk_name": "Fast Track",
+			"character": "Yun-Jin Lee Teachable Perk"
+		},
+		{
+			"perk_name": "Self-Preservation",
+			"character": "Yun-Jin Lee Teachable Perk"
+		},
+		{
+			"perk_name": "Smash Hit",
+			"character": "Yun-Jin Lee Teachable Perk"
+		},
+		{
+			"perk_name": "Counterforce",
+			"character": "Jill Valentine Teachable Perk"
+		},
+		{
+			"perk_name": "Resurgence",
+			"character": "Jill Valentine Teachable Perk"
+		},
+		{
+			"perk_name": "Blast Mine",
+			"character": "Jill Valentine Teachable Perk"
+		},
+		{
+			"perk_name": "Bite the Bullet",
+			"character": "Leon Scott Kennedy Teachable Perk"
+		},
+		{
+			"perk_name": "Flashbang",
+			"character": "Leon Scott Kennedy Teachable Perk"
+		},
+		{
+			"perk_name": "Rookie Spirit",
+			"character": "Leon Scott Kennedy Teachable Perk"
+		},
+		{
+			"perk_name": "Clairvoyance",
+			"character": "Mikaela Reid Teachable Perk"
+		},
+		{
+			"perk_name": "Boon: Circle of Healing",
+			"character": "Mikaela Reid Teachable Perk"
+		},
+		{
+			"perk_name": "Boon: Shadow Step",
+			"character": "Mikaela Reid Teachable Perk"
+		},
+		{
+			"perk_name": "Overcome",
+			"character": "Jonah Vasquez Teachable Perk"
+		},
+		{
+			"perk_name": "Corrective Action",
+			"character": "Jonah Vasquez Teachable Perk"
+		},
+		{
+			"perk_name": "Boon: Exponential",
+			"character": "Jonah Vasquez Teachable Perk"
+		},
+		{
+			"perk_name": "Parental Guidance",
+			"character": "Yoichi Asakawa Teachable Perk"
+		},
+		{
+			"perk_name": "Empathic Connection",
+			"character": "Yoichi Asakawa Teachable Perk"
+		},
+		{
+			"perk_name": "Boon: Dark Theory",
+			"character": "Yoichi Asakawa Teachable Perk"
+		},
+		{
+			"perk_name": "Inner Focus",
+			"character": "Haddie Kaur Teachable Perk"
+		},
+		{
+			"perk_name": "Residual Manifest",
+			"character": "Haddie Kaur Teachable Perk"
+		},
+		{
+			"perk_name": "Overzealous",
+			"character": "Haddie Kaur Teachable Perk"
+		},
+		{
+			"perk_name": "Wiretap",
+			"character": "Ada Wong Teachable Perk"
+		},
+		{
+			"perk_name": "Reactive Healing",
+			"character": "Ada Wong Teachable Perk"
+		},
+		{
+			"perk_name": "Low Profile",
+			"character": "Ada Wong Teachable Perk"
+		},
+		{
+			"perk_name": "Better than New",
+			"character": "Rebecca Chambers Teachable Perk"
+		},
+		{
+			"perk_name": "Reassurance",
+			"character": "Rebecca Chambers Teachable Perk"
+		},
+		{
+			"perk_name": "Hyperfocus",
+			"character": "Rebecca Chambers Teachable Perk"
+		},
+		{
+			"perk_name": "Potential Energy",
+			"character": "Vittorio Toscano Teachable Perk"
+		},
+		{
+			"perk_name": "Fogwise",
+			"character": "Vittorio Toscano Teachable Perk"
+		},
+		{
+			"perk_name": "Quick Gambit",
+			"character": "Vittorio Toscano Teachable Perk"
+		},
+		{
+			"perk_name": "Cut Loose",
+			"character": "Thalita Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Friendly Competition",
+			"character": "Thalita Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Teamwork: Power of Two",
+			"character": "Thalita Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Background Player",
+			"character": "Renato Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Blood Rush",
+			"character": "Renato Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Teamwork: Collective Stealth",
+			"character": "Renato Lyra Teachable Perk"
+		},
+		{
+			"perk_name": "Made for This",
+			"character": "Gabriel Soma Teachable Perk"
+		},
+		{
+			"perk_name": "Scavenger",
+			"character": "Gabriel Soma Teachable Perk"
+		},
+		{
+			"perk_name": "Troubleshooter",
+			"character": "Gabriel Soma Teachable Perk"
+		},
+		{
+			"perk_name": "Dramaturgy",
+			"character": "Nicolas Cage Teachable Perk"
+		},
+		{
+			"perk_name": "Plot Twist",
+			"character": "Nicolas Cage Teachable Perk"
+		},
+		{
+			"perk_name": "Scene Partner",
+			"character": "Nicolas Cage Teachable Perk"
+		},
+		{
+			"perk_name": "Lucky Star",
+			"character": "Ellen Ripley Teachable Perk"
+		},
+		{
+			"perk_name": "Light-Footed",
+			"character": "Ellen Ripley Teachable Perk"
+		},
+		{
+			"perk_name": "Chemical Trap",
+			"character": "Ellen Ripley Teachable Perk"
+		},
+		{
+			"perk_name": "Invocation: Weaving Spiders",
+			"character": "Sable Ward Teachable Perk"
+		},
+		{
+			"perk_name": "Strength in Shadows",
+			"character": "Sable Ward Teachable Perk"
+		},
+		{
+			"perk_name": "Wicked",
+			"character": "Sable Ward Teachable Perk"
+		},
+		{
+			"perk_name": "Bardic Inspiration",
+			"character": "The Troupe Teachable Perk"
+		},
+		{
+			"perk_name": "Mirrored Illusion",
+			"character": "The Troupe Teachable Perk"
+		},
+		{
+			"perk_name": "Still Sight",
+			"character": "The Troupe Teachable Perk"
+		},
+		{
+			"perk_name": "Finesse",
+			"character": "Lara Croft Teachable Perk"
+		},
+		{
+			"perk_name": "Hardened",
+			"character": "Lara Croft Teachable Perk"
+		},
+		{
+			"perk_name": "Specialist",
+			"character": "Lara Croft Teachable Perk"
+		},
+		{
+			"perk_name": "Exultation",
+			"character": "Trevor Belmont Teachable Perk"
+		},
+		{
+			"perk_name": "Eyes Of Belmont",
+			"character": "Trevor Belmont Teachable Perk"
+		},
+		{
+			"perk_name": "Moment Of Glory",
+			"character": "Trevor Belmont Teachable Perk"
+		},
+		{
+			"perk_name": "Clean Break",
+			"character": "Taurie Cain Teachable Perk"
+		},
+		{
+			"perk_name": "Invocation: Treacherous Crows",
+			"character": "Taurie Cain Teachable Perk"
+		},
+		{
+			"perk_name": "Shoulder The Burden",
+			"character": "Taurie Cain Teachable Perk"
+		},
+		{
+			"perk_name": "Do No Harm",
+			"character": "Orela Rose Teachable Perk"
+		},
+		{
+			"perk_name": "Duty Of Care",
+			"character": "Orela Rose Teachable Perk"
+		},
+		{
+			"perk_name": "Rapid Response",
+			"character": "Orela Rose Teachable Perk"
+		},
+		{
+			"perk_name": "Apocalyptic Ingenuity",
+			"character": "Rick Grimes Teachable Perk"
+		},
+		{
+			"perk_name": "Come And Get Me!",
+			"character": "Rick Grimes Teachable Perk"
+		},
+		{
+			"perk_name": "Teamwork: Toughen Up",
+			"character": "Rick Grimes Teachable Perk"
+		},
+		{
+			"perk_name": "Conviction",
+			"character": "Michonne Grimes Teachable Perk"
+		},
+		{
+			"perk_name": "Last Stand",
+			"character": "Michonne Grimes Teachable Perk"
+		},
+		{
+			"perk_name": "Teamwork: Throw Down",
+			"character": "Michonne Grimes Teachable Perk"
+		}
+
+	]
+}
