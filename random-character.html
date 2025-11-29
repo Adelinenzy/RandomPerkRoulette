@@ -15,12 +15,10 @@
     }
 
     body.killer {
-      /* léger contour rouge pour les killers */
       --accent-color: #ff4444;
     }
 
     body.survivor {
-      /* léger contour bleu pour les survs */
       --accent-color: #44aaff;
     }
 
@@ -209,7 +207,6 @@
       const t = (params.get('type') || '').toLowerCase();
       if (t === 'kill' || t === 'killer' || t === 'k') return 'kill';
       if (t === 'surv' || t === 'survivor' || t === 's') return 'surv';
-      // défaut : survivant
       return 'surv';
     }
 
@@ -220,8 +217,6 @@
     }
 
     function prettyDisplayName(name) {
-      // Tu peux ajuster ici si certains noms sont un peu moches
-      // (ex: Ashley JWilliams -> Ashley J. Williams), pour l’instant on laisse brut
       return name;
     }
 
@@ -243,15 +238,17 @@
         return;
       }
 
-      const imgPath = isKiller
-        ? `CharPortraits/Killers/${picked}.png`
-        : `CharPortraits/Surv/${picked}.png`;
+      // *** CHEMINS CORRIGÉS + encodage des espaces ***
+      const basePath = isKiller
+        ? 'randomchar/img/kill/'
+        : 'randomchar/img/surv/';
+
+      const imgPath = basePath + encodeURIComponent(picked) + '.png';
 
       portraitEl.style.backgroundImage = `url('${imgPath}')`;
       nameEl.textContent = prettyDisplayName(picked);
       typeLabelEl.textContent = isKiller ? 'Killer aléatoire' : 'Survivant aléatoire';
 
-      // Pour debug/éventuelle utilisation externe
       window._LAST_RANDOM_CHARACTER = {
         type: isKiller ? 'killer' : 'survivor',
         name: picked,
