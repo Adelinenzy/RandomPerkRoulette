@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>DBD Random Character</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent; /* pour OBS */
+      font-family: Arial, sans-serif;
+    }
+
+    body.killer {
+      /* léger contour rouge pour les killers */
+      --accent-color: #ff4444;
+    }
+
+    body.survivor {
+      /* léger contour bleu pour les survs */
+      --accent-color: #44aaff;
+    }
+
+    #wrapper {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 8px rgba(0,0,0,0.9);
+      padding: 10px;
+    }
+
+    #portrait {
+      width: 60vmin;
+      height: 60vmin;
+      max-width: 550px;
+      max-height: 550px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.9);
+      border: 4px solid var(--accent-color, #ffffff);
+      opacity: 0;
+      transform: scale(0.9);
+      animation: popIn 0.6s forwards;
+    }
+
+    #char-name {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid var(--accent-color, #ffffff);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.6s forwards;
+      animation-delay: 0.2s;
+    }
+
+    #type-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--accent-color, #ffffff);
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="type-label"></div>
+    <div id="portrait"></div>
+    <div id="char-name"></div>
+  </div>
+
+  <script>
+    // --- LISTES DES PERSOS (noms = noms de fichiers sans .png) ---
+
+    const KILLERS = [
+      'The Animatronic',
+      'The Artist',
+      'The Blight',
+      'The Cannibal',
+      'The Cenobite',
+      'The Clown',
+      'The Deathslinger',
+      'The Demogorgon',
+      'The Doctor',
+      'The Dracula',
+      'The Dredge',
+      'The Executioner',
+      'The Ghoul',
+      'The Good Guy',
+      'The Hag',
+      'The Hillbilly',
+      'The Houndmaster',
+      'The Huntress',
+      'The Knight',
+      'The Krasue',
+      'The Legion',
+      'The Lich',
+      'The Mastermind',
+      'The Nemesis',
+      'The Nightmare',
+      'The Nurse',
+      'The Oni',
+      'The Onryo',
+      'The Pig',
+      'The Plague',
+      'The Shape',
+      'The Singularity',
+      'The Spirit',
+      'The Trapper',
+      'The Trickster',
+      'The Unknown',
+      'The Wraith',
+      'The Xenomorph',
+    ];
+
+    const SURVIVORS = [
+      'Ace Visconti',
+      'Ada Wong',
+      'Adam Francis',
+      'Alan Wake',
+      'Ashley JWilliams',
+      'Cheryl Mason',
+      'Claudette Morel',
+      'David King',
+      'Detective David Tapp',
+      'Dwight Fairfield',
+      'Ellen Ripley',
+      'Elodie Rakoto',
+      'Felix Richter',
+      'Feng Min',
+      'Gabriel Soma',
+      'Haddie Kaur',
+      'Jake Park',
+      'Jane Romero',
+      'Jeff Johansen',
+      'Jill Valentine',
+      'Jonah Vasquez',
+      'Kate Denson',
+      'Lara Croft',
+      'Laurie Strode',
+      'Leon SKennedy',
+      'Meg Thomas',
+      'Michonne Grimes',
+      'Mikaela Reid',
+      'Nancy Wheeler',
+      'Nea Karlsson',
+      'Nicolas Cage',
+      'Orela Rose',
+      'Quentin Smith',
+      'Rebecca Chambers',
+      'Renato Lyra',
+      'Rick Grimes',
+      'Sable Ward',
+      'Steve Harrington',
+      'Taurie Cain',
+      'Thalita Lyra',
+      'The Troupe',
+      'Trevor Belmont',
+      'Vee Boonyasak',
+      'Vittorio Toscano',
+      'William Bill Overbeck',
+      'Yoichi Asakawa',
+      'Yui Kimura',
+      'Yun Jin Lee',
+      'Zarina Kassir',
+    ];
+
+    function getTypeFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const t = (params.get('type') || '').toLowerCase();
+      if (t === 'kill' || t === 'killer' || t === 'k') return 'kill';
+      if (t === 'surv' || t === 'survivor' || t === 's') return 'surv';
+      // défaut : survivant
+      return 'surv';
+    }
+
+    function pickRandom(list) {
+      if (!list.length) return null;
+      const idx = Math.floor(Math.random() * list.length);
+      return list[idx];
+    }
+
+    function prettyDisplayName(name) {
+      // Tu peux ajuster ici si certains noms sont un peu moches
+      // (ex: Ashley JWilliams -> Ashley J. Williams), pour l’instant on laisse brut
+      return name;
+    }
+
+    function init() {
+      const type = getTypeFromUrl(); // 'kill' ou 'surv'
+      const isKiller = type === 'kill';
+
+      document.body.classList.add(isKiller ? 'killer' : 'survivor');
+
+      const pool = isKiller ? KILLERS : SURVIVORS;
+      const picked = pickRandom(pool);
+
+      const portraitEl = document.getElementById('portrait');
+      const nameEl = document.getElementById('char-name');
+      const typeLabelEl = document.getElementById('type-label');
+
+      if (!picked) {
+        nameEl.textContent = 'Aucun personnage trouvé 😢';
+        return;
+      }
+
+      const imgPath = isKiller
+        ? `CharPortraits/Killers/${picked}.png`
+        : `CharPortraits/Surv/${picked}.png`;
+
+      portraitEl.style.backgroundImage = `url('${imgPath}')`;
+      nameEl.textContent = prettyDisplayName(picked);
+      typeLabelEl.textContent = isKiller ? 'Killer aléatoire' : 'Survivant aléatoire';
+
+      // Pour debug/éventuelle utilisation externe
+      window._LAST_RANDOM_CHARACTER = {
+        type: isKiller ? 'killer' : 'survivor',
+        name: picked,
+        img: imgPath,
+      };
+    }
+
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>
