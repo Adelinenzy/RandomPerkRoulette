@@ -65,19 +65,6 @@
       animation-delay: 0.2s;
     }
 
-    #type-label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.7);
-      border: 1px solid var(--accent-color, #ffffff);
-      opacity: 0;
-      animation: fadeIn 0.5s forwards;
-    }
-
     @keyframes popIn {
       to {
         opacity: 1;
@@ -91,115 +78,38 @@
         transform: translateY(0);
       }
     }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
   </style>
 </head>
 <body>
   <div id="wrapper">
-    <div id="type-label"></div>
     <div id="portrait"></div>
     <div id="char-name"></div>
   </div>
 
   <script>
-    // --- LISTES DES PERSOS (noms = noms de fichiers sans .png) ---
-
     const KILLERS = [
-      'The Animatronic',
-      'The Artist',
-      'The Blight',
-      'The Cannibal',
-      'The Cenobite',
-      'The Clown',
-      'The Deathslinger',
-      'The Demogorgon',
-      'The Doctor',
-      'The Dracula',
-      'The Dredge',
-      'The Executioner',
-      'The Ghoul',
-      'The Good Guy',
-      'The Hag',
-      'The Hillbilly',
-      'The Houndmaster',
-      'The Huntress',
-      'The Knight',
-      'The Krasue',
-      'The Legion',
-      'The Lich',
-      'The Mastermind',
-      'The Nemesis',
-      'The Nightmare',
-      'The Nurse',
-      'The Oni',
-      'The Onryo',
-      'The Pig',
-      'The Plague',
-      'The Shape',
-      'The Singularity',
-      'The Spirit',
-      'The Trapper',
-      'The Trickster',
-      'The Unknown',
-      'The Wraith',
-      'The Xenomorph',
+      'The Animatronic','The Artist','The Blight','The Cannibal','The Cenobite',
+      'The Clown','The Deathslinger','The Demogorgon','The Doctor','The Dracula',
+      'The Dredge','The Executioner','The Ghoul','The Good Guy','The Hag',
+      'The Hillbilly','The Houndmaster','The Huntress','The Knight','The Krasue',
+      'The Legion','The Lich','The Mastermind','The Nemesis','The Nightmare',
+      'The Nurse','The Oni','The Onryo','The Pig','The Plague','The Shape',
+      'The Singularity','The Spirit','The Trapper','The Trickster','The Unknown',
+      'The Wraith','The Xenomorph'
     ];
 
     const SURVIVORS = [
-      'Ace Visconti',
-      'Ada Wong',
-      'Adam Francis',
-      'Alan Wake',
-      'Ashley JWilliams',
-      'Cheryl Mason',
-      'Claudette Morel',
-      'David King',
-      'Detective David Tapp',
-      'Dwight Fairfield',
-      'Ellen Ripley',
-      'Elodie Rakoto',
-      'Felix Richter',
-      'Feng Min',
-      'Gabriel Soma',
-      'Haddie Kaur',
-      'Jake Park',
-      'Jane Romero',
-      'Jeff Johansen',
-      'Jill Valentine',
-      'Jonah Vasquez',
-      'Kate Denson',
-      'Lara Croft',
-      'Laurie Strode',
-      'Leon SKennedy',
-      'Meg Thomas',
-      'Michonne Grimes',
-      'Mikaela Reid',
-      'Nancy Wheeler',
-      'Nea Karlsson',
-      'Nicolas Cage',
-      'Orela Rose',
-      'Quentin Smith',
-      'Rebecca Chambers',
-      'Renato Lyra',
-      'Rick Grimes',
-      'Sable Ward',
-      'Steve Harrington',
-      'Taurie Cain',
-      'Thalita Lyra',
-      'The Troupe',
-      'Trevor Belmont',
-      'Vee Boonyasak',
-      'Vittorio Toscano',
-      'William Bill Overbeck',
-      'Yoichi Asakawa',
-      'Yui Kimura',
-      'Yun Jin Lee',
-      'Zarina Kassir',
+      'Ace Visconti','Ada Wong','Adam Francis','Alan Wake','Ashley J Williams',
+      'Cheryl Mason','Claudette Morel','David King','Detective David Tapp',
+      'Dwight Fairfield','Ellen Ripley','Elodie Rakoto','Felix Richter','Feng Min',
+      'Gabriel Soma','Haddie Kaur','Jake Park','Jane Romero','Jeff Johansen',
+      'Jill Valentine','Jonah Vasquez','Kate Denson','Lara Croft','Laurie Strode',
+      'Leon S Kennedy','Meg Thomas','Michonne Grimes','Mikaela Reid','Nancy Wheeler',
+      'Nea Karlsson','Nicolas Cage','Orela Rose','Quentin Smith','Rebecca Chambers',
+      'Renato Lyra','Rick Grimes','Sable Ward','Steve Harrington','Taurie Cain',
+      'Thalita Lyra','The Troupe','Trevor Belmont','Vee Boonyasak',
+      'Vittorio Toscano','William Bill Overbeck','Yoichi Asakawa',
+      'Yui Kimura','Yun Jin Lee','Zarina Kassir'
     ];
 
     function getTypeFromUrl() {
@@ -211,17 +121,11 @@
     }
 
     function pickRandom(list) {
-      if (!list.length) return null;
-      const idx = Math.floor(Math.random() * list.length);
-      return list[idx];
-    }
-
-    function prettyDisplayName(name) {
-      return name;
+      return list[Math.floor(Math.random() * list.length)];
     }
 
     function init() {
-      const type = getTypeFromUrl(); // 'kill' ou 'surv'
+      const type = getTypeFromUrl();
       const isKiller = type === 'kill';
 
       document.body.classList.add(isKiller ? 'killer' : 'survivor');
@@ -229,31 +133,15 @@
       const pool = isKiller ? KILLERS : SURVIVORS;
       const picked = pickRandom(pool);
 
-      const portraitEl = document.getElementById('portrait');
-      const nameEl = document.getElementById('char-name');
-      const typeLabelEl = document.getElementById('type-label');
+      const portrait = document.getElementById('portrait');
+      const name = document.getElementById('char-name');
 
-      if (!picked) {
-        nameEl.textContent = 'Aucun personnage trouvé 😢';
-        return;
-      }
+      const imgPath = isKiller
+        ? `randomchar/img/kill/${picked}.png`
+        : `randomchar/img/surv/${picked}.png`;
 
-      // *** CHEMINS CORRIGÉS + encodage des espaces ***
-      const basePath = isKiller
-        ? 'randomchar/img/kill/'
-        : 'randomchar/img/surv/';
-
-      const imgPath = basePath + encodeURIComponent(picked) + '.png';
-
-      portraitEl.style.backgroundImage = `url('${imgPath}')`;
-      nameEl.textContent = prettyDisplayName(picked);
-      typeLabelEl.textContent = isKiller ? 'Killer aléatoire' : 'Survivant aléatoire';
-
-      window._LAST_RANDOM_CHARACTER = {
-        type: isKiller ? 'killer' : 'survivor',
-        name: picked,
-        img: imgPath,
-      };
+      portrait.style.backgroundImage = `url('${imgPath}')`;
+      name.textContent = picked;
     }
 
     window.addEventListener('load', init);
