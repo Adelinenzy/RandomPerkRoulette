@@ -13,54 +13,59 @@
       overflow: hidden;
       background: transparent; /* pour OBS */
       font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
     }
 
-    /* Rouge pour Killer / Bleu pour Surv */
     body.killer {
       --accent-color: #ff4444;
     }
+
     body.survivor {
       --accent-color: #44aaff;
     }
 
-    /* ----- PORTRAIT ----- */
+    #wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    }
+
+    /* --- PORTRAIT SANS CADRE --- */
     #portrait {
-      width: 512px;      /* EXACTEMENT la taille des PNG */
+      width: 512px;
       height: 512px;
       background-position: center;
-      background-size: contain;  /* NECESSAIRE pour coller l’image au cadre */
+      background-size: contain;
       background-repeat: no-repeat;
 
-      border: 4px solid var(--accent-color);
-      border-radius: 6px;
-
-      box-shadow: 0 0 20px rgba(0,0,0,0.85);
+      /* Suppression complète du cadre */
+      border: none;
+      box-shadow: none;
 
       opacity: 0;
       transform: scale(0.9);
-      animation: popIn 0.4s forwards;
+      animation: popIn 0.6s forwards;
     }
 
-    /* ----- NOM DU PERSONNAGE ----- */
+    /* --- NOM AVEC CADRE COULEUR --- */
     #char-name {
       margin-top: 15px;
-      font-size: 2.4rem;
-      padding: 8px 25px;
-
-      background: rgba(0,0,0,0.75);
+      font-size: 2.3rem;
+      text-align: center;
+      padding: 10px 25px;
       border-radius: 999px;
-      border: 2px solid var(--accent-color);
 
-      color: white;
-      text-shadow: 0 0 5px black;
+      background: rgba(0,0,0,0.7);
+      border: 3px solid var(--accent-color);
+
       opacity: 0;
-      transform: translateY(5px);
-      animation: fadeUp 0.4s forwards;
-      animation-delay: 0.15s;
+      transform: translateY(10px);
+      animation: fadeUp 0.6s forwards;
+      animation-delay: 0.25s;
     }
 
     @keyframes popIn {
@@ -75,13 +80,14 @@
         transform: translateY(0);
       }
     }
-
   </style>
 </head>
 
 <body>
-  <div id="portrait"></div>
-  <div id="char-name"></div>
+  <div id="wrapper">
+    <div id="portrait"></div>
+    <div id="char-name"></div>
+  </div>
 
   <script>
     const KILLERS = [
@@ -110,35 +116,37 @@
     ];
 
     function getTypeFromUrl() {
-      const p = new URLSearchParams(window.location.search);
-      const type = (p.get("type") || "").toLowerCase();
-      if (["kill","killer","k"].includes(type)) return "kill";
-      if (["surv","survivor","s"].includes(type)) return "surv";
-      return "surv";
+      const params = new URLSearchParams(window.location.search);
+      const t = (params.get('type') || '').toLowerCase();
+      if (['kill','killer','k'].includes(t)) return 'kill';
+      if (['surv','survivor','s'].includes(t)) return 'surv';
+      return 'surv';
     }
 
-    function pickRandom(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
+    function pickRandom(list) {
+      return list[Math.floor(Math.random() * list.length)];
     }
 
     function init() {
       const type = getTypeFromUrl();
-      const isKiller = type === "kill";
+      const isKiller = type === 'kill';
+      document.body.classList.add(isKiller ? 'killer' : 'survivor');
 
-      document.body.classList.add(isKiller ? "killer" : "survivor");
+      const pool = isKiller ? KILLERS : SURVIVORS;
+      const picked = pickRandom(pool);
 
-      const list = isKiller ? KILLERS : SURVIVORS;
-      const character = pickRandom(list);
+      const portrait = document.getElementById('portrait');
+      const name = document.getElementById('char-name');
 
-      const path = isKiller
-        ? `randomchar/img/kill/${character}.png`
-        : `randomchar/img/surv/${character}.png`;
+      const imgPath = isKiller
+        ? `randomchar/img/kill/${picked}.png`
+        : `randomchar/img/surv/${picked}.png`;
 
-      document.getElementById("portrait").style.backgroundImage = `url("${path}")`;
-      document.getElementById("char-name").textContent = character;
+      portrait.style.backgroundImage = `url('${imgPath}')`;
+      name.textContent = picked;
     }
 
-    window.addEventListener("load", init);
+    window.addEventListener('load', init);
   </script>
 </body>
 </html>
