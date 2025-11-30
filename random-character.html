@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>DBD Random Character</title>
 
+  <!-- Police identique à celle des perks -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
@@ -12,7 +15,7 @@
       height: 100%;
       overflow: hidden;
       background: transparent; /* pour OBS */
-      font-family: Arial, sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
     }
 
     body.killer {
@@ -24,6 +27,7 @@
     }
 
     #wrapper {
+      box-sizing: border-box;
       width: 100%;
       height: 100%;
       display: flex;
@@ -31,41 +35,43 @@
       align-items: center;
       justify-content: center;
       color: white;
-      text-shadow: 0 0 8px rgba(0,0,0,0.9);
+      padding: 10px;
     }
 
-    /* --- PORTRAIT SANS CADRE --- */
+    /* PNG sans cadre */
     #portrait {
       width: 512px;
       height: 512px;
       background-position: center;
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
 
-      /* Suppression complète du cadre */
-      border: none;
+      border-radius: 0px;
       box-shadow: none;
+      border: none;
 
       opacity: 0;
       transform: scale(0.9);
       animation: popIn 0.6s forwards;
     }
 
-    /* --- NOM AVEC CADRE COULEUR --- */
+    /* NOM — style identique aux perks */
     #char-name {
-      margin-top: 15px;
-      font-size: 2.3rem;
+      margin-top: 18px;
+      font-size: 62px; /* GRAND — même impact visuel que les perks */
       text-align: center;
-      padding: 10px 25px;
-      border-radius: 999px;
+      padding: 5px 20px;
 
-      background: rgba(0,0,0,0.7);
-      border: 3px solid var(--accent-color);
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      
+      /* contour pour être lisible */
+      -webkit-text-stroke: 2px black;
 
       opacity: 0;
       transform: translateY(10px);
       animation: fadeUp 0.6s forwards;
-      animation-delay: 0.25s;
+      animation-delay: 0.2s;
     }
 
     @keyframes popIn {
@@ -74,6 +80,7 @@
         transform: scale(1);
       }
     }
+
     @keyframes fadeUp {
       to {
         opacity: 1;
@@ -82,7 +89,6 @@
     }
   </style>
 </head>
-
 <body>
   <div id="wrapper">
     <div id="portrait"></div>
@@ -118,8 +124,8 @@
     function getTypeFromUrl() {
       const params = new URLSearchParams(window.location.search);
       const t = (params.get('type') || '').toLowerCase();
-      if (['kill','killer','k'].includes(t)) return 'kill';
-      if (['surv','survivor','s'].includes(t)) return 'surv';
+      if (t === 'kill' || t === 'killer' || t === 'k') return 'kill';
+      if (t === 'surv' || t === 'survivor' || t === 's') return 'surv';
       return 'surv';
     }
 
@@ -130,6 +136,7 @@
     function init() {
       const type = getTypeFromUrl();
       const isKiller = type === 'kill';
+
       document.body.classList.add(isKiller ? 'killer' : 'survivor');
 
       const pool = isKiller ? KILLERS : SURVIVORS;
@@ -143,7 +150,166 @@
         : `randomchar/img/surv/${picked}.png`;
 
       portrait.style.backgroundImage = `url('${imgPath}')`;
-      name.textContent = picked;
+      name.textContent = picked.toUpperCase(); /* BONUS : comme les perks */
+    }
+
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>DBD Random Character</title>
+
+  <!-- Police identique à celle des perks -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent; /* pour OBS */
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    body.killer {
+      --accent-color: #ff4444;
+    }
+
+    body.survivor {
+      --accent-color: #44aaff;
+    }
+
+    #wrapper {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 10px;
+    }
+
+    /* PNG sans cadre */
+    #portrait {
+      width: 512px;
+      height: 512px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      border-radius: 0px;
+      box-shadow: none;
+      border: none;
+
+      opacity: 0;
+      transform: scale(0.9);
+      animation: popIn 0.6s forwards;
+    }
+
+    /* NOM — style identique aux perks */
+    #char-name {
+      margin-top: 18px;
+      font-size: 62px; /* GRAND — même impact visuel que les perks */
+      text-align: center;
+      padding: 5px 20px;
+
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      
+      /* contour pour être lisible */
+      -webkit-text-stroke: 2px black;
+
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.6s forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="portrait"></div>
+    <div id="char-name"></div>
+  </div>
+
+  <script>
+    const KILLERS = [
+      'The Animatronic','The Artist','The Blight','The Cannibal','The Cenobite',
+      'The Clown','The Deathslinger','The Demogorgon','The Doctor','The Dracula',
+      'The Dredge','The Executioner','The Ghoul','The Good Guy','The Hag',
+      'The Hillbilly','The Houndmaster','The Huntress','The Knight','The Krasue',
+      'The Legion','The Lich','The Mastermind','The Nemesis','The Nightmare',
+      'The Nurse','The Oni','The Onryo','The Pig','The Plague','The Shape',
+      'The Singularity','The Spirit','The Trapper','The Trickster','The Unknown',
+      'The Wraith','The Xenomorph'
+    ];
+
+    const SURVIVORS = [
+      'Ace Visconti','Ada Wong','Adam Francis','Alan Wake','Ashley J Williams',
+      'Cheryl Mason','Claudette Morel','David King','Detective David Tapp',
+      'Dwight Fairfield','Ellen Ripley','Elodie Rakoto','Felix Richter','Feng Min',
+      'Gabriel Soma','Haddie Kaur','Jake Park','Jane Romero','Jeff Johansen',
+      'Jill Valentine','Jonah Vasquez','Kate Denson','Lara Croft','Laurie Strode',
+      'Leon S Kennedy','Meg Thomas','Michonne Grimes','Mikaela Reid','Nancy Wheeler',
+      'Nea Karlsson','Nicolas Cage','Orela Rose','Quentin Smith','Rebecca Chambers',
+      'Renato Lyra','Rick Grimes','Sable Ward','Steve Harrington','Taurie Cain',
+      'Thalita Lyra','The Troupe','Trevor Belmont','Vee Boonyasak',
+      'Vittorio Toscano','William Bill Overbeck','Yoichi Asakawa',
+      'Yui Kimura','Yun Jin Lee','Zarina Kassir'
+    ];
+
+    function getTypeFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const t = (params.get('type') || '').toLowerCase();
+      if (t === 'kill' || t === 'killer' || t === 'k') return 'kill';
+      if (t === 'surv' || t === 'survivor' || t === 's') return 'surv';
+      return 'surv';
+    }
+
+    function pickRandom(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function init() {
+      const type = getTypeFromUrl();
+      const isKiller = type === 'kill';
+
+      document.body.classList.add(isKiller ? 'killer' : 'survivor');
+
+      const pool = isKiller ? KILLERS : SURVIVORS;
+      const picked = pickRandom(pool);
+
+      const portrait = document.getElementById('portrait');
+      const name = document.getElementById('char-name');
+
+      const imgPath = isKiller
+        ? `randomchar/img/kill/${picked}.png`
+        : `randomchar/img/surv/${picked}.png`;
+
+      portrait.style.backgroundImage = `url('${imgPath}')`;
+      name.textContent = picked.toUpperCase(); /* BONUS : comme les perks */
     }
 
     window.addEventListener('load', init);
