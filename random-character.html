@@ -36,20 +36,20 @@
     }
 
     #portrait {
-      width: 60vmin;
-      height: 60vmin;
-      max-width: 550px;
-      max-height: 550px;
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.9);
-      border: 4px solid var(--accent-color, #ffffff);
-      opacity: 0;
-      transform: scale(0.9);
-      animation: popIn 0.6s forwards;
-    }
+  width: 512px;
+  height: 512px;
+  background-position: center;
+  background-size: cover;   /* Remplit le cadre exactement */
+  background-repeat: no-repeat;
+
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.85);
+  border: 4px solid var(--accent-color, #ffffff);
+
+  opacity: 0;
+  transform: scale(0.9);
+  animation: popIn 0.6s forwards;
+}
 
     #char-name {
       margin-top: 20px;
